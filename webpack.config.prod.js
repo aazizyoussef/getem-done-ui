@@ -18,9 +18,6 @@ export default {
     publicPath: '/',
     filename: 'bundle.js'
   },
-  devServer: {
-    contentBase: './dist'
-  },
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.DefinePlugin(GLOBALS),
