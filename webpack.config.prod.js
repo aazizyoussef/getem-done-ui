@@ -1,4 +1,5 @@
 import webpack from 'webpack';
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 import path from 'path';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
@@ -26,7 +27,10 @@ export default {
     new webpack.DefinePlugin(GLOBALS),
     new ExtractTextPlugin('styles.css'),
     new webpack.optimize.DedupePlugin(),
-    new webpack.optimize.UglifyJsPlugin()
+    new webpack.optimize.UglifyJsPlugin(),
+    new CopyWebpackPlugin([
+      { from: 'web.config', to: '' }
+    ])
   ],
   module: {
     loaders: [
