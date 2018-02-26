@@ -1,6 +1,6 @@
 class TaskApi{
     static getAllTasks() {
-        return fetch('https://getem-done-functions.azurewebsites.net/api/GetemDoneTasksFunction?code=8caap7x6PjnkqapCM0JaCafro1FJ27qh4ji2exZnTaWYzcTH3jcyyw==')
+        return fetch('https://getem-done-functions.azurewebsites.net/api/GetemDoneTasksFunction')
         .then((result) => {
           // Get the result
           // If we want text, call result.text()
