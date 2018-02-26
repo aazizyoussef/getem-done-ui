@@ -17,7 +17,7 @@ const onFailure = (response) => {
 const Login = () => {
   return (
   <GoogleLogin
-    clientId="644339519782-6f5bmtkt0022lchhdu2lb8v8t2agqjlj.apps.googleusercontent.com"
+    clientId="644339519782-37v0onsactiehec1sg2ktla0bu3dvbvp.apps.googleusercontent.com"
     buttonText="Google Login"
     onSuccess={onSuccess}
     onFailure={onFailure}

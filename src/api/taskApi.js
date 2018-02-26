@@ -6,8 +6,7 @@ class TaskApi{
         {
           headers: {
             'content-type': 'application/json',
-            'Authorization' : 'Bearer ' + ls.get('token'),
-            'X-ZUMO-AUTH': ls.get('token')
+            'Authorization' : 'Bearer ' + ls.get('token')
           }
         })
         .then((result) => {
