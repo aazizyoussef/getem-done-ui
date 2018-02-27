@@ -1,5 +1,3 @@
-import ls from 'local-storage';
-
 class TaskApi{
     static getAllTasks() {
         return fetch('https://getem-done-functions.azurewebsites.net/tasks-api', 
