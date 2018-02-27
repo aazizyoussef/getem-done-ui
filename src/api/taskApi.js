@@ -2,12 +2,9 @@ import ls from 'local-storage';
 
 class TaskApi{
     static getAllTasks() {
-        return fetch('https://getem-done-functions.azurewebsites.net/api/GetemDoneTasksFunction', 
+        return fetch('https://getem-done-functions.azurewebsites.net/tasks-api', 
         {
-          headers: {
-            'content-type': 'application/json',
-            'Authorization' : 'Bearer ' + ls.get('token')
-          }
+          credentials: "include"
         })
         .then((result) => {
           // Get the result

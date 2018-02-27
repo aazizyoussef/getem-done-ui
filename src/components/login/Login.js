@@ -7,6 +7,7 @@ import ls from 'local-storage';
 
 
 const onSuccess = (response) => {
+  //window.open("https://getem-done-functions.azurewebsites.net/.auth/login/google");
   ls.set("token", response.tokenId);  
 };
 
@@ -16,12 +17,7 @@ const onFailure = (response) => {
 
 const Login = () => {
   return (
-  <GoogleLogin
-    clientId="644339519782-37v0onsactiehec1sg2ktla0bu3dvbvp.apps.googleusercontent.com"
-    buttonText="Google Login"
-    onSuccess={onSuccess}
-    onFailure={onFailure}
-  />
+    <a href="https://getem-done-functions.azurewebsites.net/.auth/login/google?post_login_redirect_uri=https://getem-done-ui.azurewebsites.net">Login</a>
 );
 };
 
