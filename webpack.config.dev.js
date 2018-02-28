@@ -1,5 +1,6 @@
 import webpack from 'webpack';
 import path from 'path';
+const ReplacePlugin = require('webpack-plugin-replace');
 
 export default {
   debug: true,
@@ -20,6 +21,13 @@ export default {
     contentBase: './src'
   },
   plugins: [
+    new ReplacePlugin({
+      exclude: /node_modules/,
+      values: {
+        '##TASKSAPIURL##': 'https://getem-done-functions.azurewebsites.net/tasks-api-local',
+        '##DOMAIN##': 'http://localhost:3000'        
+      }
+    }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin()
   ],

@@ -1,5 +1,6 @@
 import webpack from 'webpack';
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const ReplacePlugin = require('webpack-plugin-replace');
 import path from 'path';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
@@ -23,6 +24,13 @@ export default {
     contentBase: './dist'
   },
   plugins: [
+    new ReplacePlugin({
+      exclude: /node_modules/,
+      values: {
+        '##TASKSAPIURL##': 'https://getem-done-functions.azurewebsites.net/tasks-api',
+        '##DOMAIN##': 'https://getem-done-ui.azurewebsites.net'     
+      }
+    }),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.DefinePlugin(GLOBALS),
     new ExtractTextPlugin('styles.css'),

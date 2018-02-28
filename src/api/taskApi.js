@@ -1,6 +1,8 @@
+import {TASKS_API_URL} from '../settings';
+
 class TaskApi{
     static getAllTasks() {
-        return fetch('https://getem-done-functions.azurewebsites.net/tasks-api', 
+        return fetch(TASKS_API_URL, 
         {
           credentials: "include"
         })
