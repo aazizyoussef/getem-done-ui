@@ -1,5 +1,5 @@
 import expect from 'expect';
-import * as courseActions from './courseActions';
+import * as todoActions from './todoActions';
 import * as types from './actionTypes';
 
 import thunk from 'redux-thunk';
@@ -7,18 +7,18 @@ import nock from 'nock';
 import configureMockStore from 'redux-mock-store';
 
 // Test a sync action
-describe('Course Actions', () => {
-  describe('createCourseSuccess', () => {
-    it('should create a CREATE_COURSE_SUCCESS action', () => {
+describe('Todo Actions', () => {
+  describe('createTodoSuccess', () => {
+    it('should create a CREATE_TODO_SUCCESS action', () => {
       //arrange
-      const course = {id: 'clean-code', title: 'Clean Code'};
+      const todo = {id: 'clean-code', Description: 'Clean Code'};
       const expectedAction = {
-        type: types.CREATE_COURSE_SUCCESS,
-        course: course
+        type: types.CREATE_TODO_SUCCESS,
+        todo: todo
       };
 
       //act
-      const action = courseActions.createCourseSuccess(course);
+      const action = todoActions.createTodoSuccess(todo);
 
       //assert
       expect(action).toEqual(expectedAction);
@@ -35,8 +35,8 @@ describe('Async Actions', () => {
     nock.cleanAll();
   });
 
-  describe('Course Actions Thunk', () => {
-    it('should create BEGIN_AJAX_CALL and LOAD_COURSES_SUCCESS when loading courses', (done) => {
+  describe('Todo Actions Thunk', () => {
+    it.skip('should create BEGIN_AJAX_CALL and LOAD_TODO_SUCCESS when loading todos', (done) => {
       // In a real app, you'd likely make a real HTTP call.
       // To mock out that http call, you can use Nock to intercept all
       // calls to a given address or pattern. This means you can test
@@ -46,18 +46,18 @@ describe('Async Actions', () => {
 
       // Here's an example call to nock.
       // nock('http://example.com/')
-      //   .get('/courses')
-      //   .reply(200, { body: { course: [{ id: 'clean-code', title: 'Clean Code'}] }});
+      //   .get('/todos')
+      //   .reply(200, { body: { todo: [{ id: 'clean-code', title: 'Clean Code'}] }});
 
       const expectedActions = [
         {type: types.BEGIN_AJAX_CALL},
-        {type: types.LOAD_COURSES_SUCCESS, body: {courses: [{id: 'clean-code', title: 'Clean Code'}]}}
+        {type: types.LOAD_TODOS_SUCCESS, body: {todos: [{id: 'clean-code', Description: 'Clean Code'}]}}
       ];
-      const store = mockStore({courses: []}, expectedActions, done);
-      store.dispatch(courseActions.loadCourses()).then(() => {
+      const store = mockStore({todos: []}, expectedActions, done);
+      store.dispatch(todoActions.loadTodos()).then(() => {
         const actions = store.getActions();
         expect(actions[0].type).toEqual(types.BEGIN_AJAX_CALL);
-        expect(actions[1].type).toEqual(types.LOAD_COURSES_SUCCESS);
+        expect(actions[1].type).toEqual(types.LOAD_TODOS_SUCCESS);
         done();
       });
     });

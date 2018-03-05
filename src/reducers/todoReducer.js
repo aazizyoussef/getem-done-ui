@@ -6,21 +6,21 @@ import initialState from './initialState';
 // create a copy of the state passed and set new values on the copy.
 // Note that I'm using Object.assign to create a copy of current state
 // and update values on the copy.
-export default function courses(state = initialState.courses, action) {
+export default function todos(state = initialState.todos, action) {
   switch (action.type) {
-    case types.LOAD_COURSES_SUCCESS:
-      return action.courses;
+    case types.LOAD_TODOS_SUCCESS:
+      return action.todos;
 
-    case types.CREATE_COURSE_SUCCESS:
+    case types.CREATE_TODO_SUCCESS:
       return [
         ...state,
-        Object.assign({}, action.course)
+        Object.assign({}, action.todo)
       ];
 
-    case types.UPDATE_COURSE_SUCCESS:
+    case types.UPDATE_TODO_SUCCESS:
       return [
-        ...state.filter(course => course.id !== action.course.id),
-        Object.assign({}, action.course)
+        ...state.filter(todo => todo.id !== action.todo.id),
+        Object.assign({}, action.todo)
       ];
 
     default:

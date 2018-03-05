@@ -1,12 +1,11 @@
 import expect from 'expect';
 import React from 'react';
 import TestUtils from 'react-addons-test-utils';
-import CourseForm from './CourseForm';
+import TodoForm from './TodoForm';
 
 function setup(saving) {
   let props = {
-    allAuthors: [],
-    course: {},
+    todo: {},
     saving: saving,
     errors: {},
     onSave: () => {},
@@ -14,7 +13,7 @@ function setup(saving) {
   };
 
   let renderer = TestUtils.createRenderer();
-  renderer.render(<CourseForm {...props}/>);
+  renderer.render(<TodoForm {...props}/>);
   let output = renderer.getRenderOutput();
 
   return {
@@ -24,7 +23,7 @@ function setup(saving) {
   };
 }
 
-describe('CourseForm via React Test Utils', () => {
+describe('TodoForm via React Test Utils', () => {
   it('renders form and h1', () => {
     const { output } = setup();
     expect(output.type).toBe('form');

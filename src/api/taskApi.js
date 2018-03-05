@@ -1,8 +1,8 @@
-import {TASKS_API_URL} from '../settings';
+import {GET_TODOS_API_URL} from '../settings';
 
 class TaskApi{
     static getAllTasks() {
-        return fetch(TASKS_API_URL, 
+        return fetch(GET_TODOS_API_URL, 
         {
           credentials: "include"
         })

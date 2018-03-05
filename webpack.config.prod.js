@@ -27,7 +27,8 @@ export default {
     new ReplacePlugin({
       exclude: /node_modules/,
       values: {
-        '##TASKSAPIURL##': 'https://getem-done-functions.azurewebsites.net/tasks-api',
+        '##ADDTODOAPIURL##': 'https://getem-done-tasks-functions.azurewebsites.net/addtodo',
+        '##GETTODOSAPIURL##': 'https://getem-done-tasks-functions.azurewebsites.net/gettodos',
         '##DOMAIN##': 'https://getem-done-ui.azurewebsites.net'     
       }
     }),
