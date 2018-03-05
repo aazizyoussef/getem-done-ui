@@ -1,11 +1,11 @@
-import {GET_TODOS_API_URL} from '../settings';
-import {ADD_TODO_API_URL} from '../settings';
+import {TODOS_API_URL} from '../settings';
 
 class TodoApi {
   static getAllTodos() {
-    return fetch(GET_TODOS_API_URL, 
+    return fetch(TODOS_API_URL + "/Get", 
       {
-        credentials: "include"
+        credentials: "include",
+        method: "get"
       })
       .then((result) => {
         // Get the result
@@ -15,7 +15,7 @@ class TodoApi {
   }
 
   static saveTodo(todo) {
-    return fetch(ADD_TODO_API_URL,
+    return fetch(TODOS_API_URL + "/Post",
       {
         credentials: "include",
         method: "post",
@@ -24,7 +24,7 @@ class TodoApi {
   }
 
   static deleteTodo(todoId) {
-    return fetch(GET_TODOS_API_URL, 
+    return fetch(TODOS_API_URL + "/Delete", 
       {
         credentials: "include"
       })

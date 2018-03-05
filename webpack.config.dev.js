@@ -24,8 +24,7 @@ export default {
     new ReplacePlugin({
       exclude: /node_modules/,
       values: {
-        '##ADDTODOAPIURL##': 'https://getem-done-tasks-functions.azurewebsites.net/addtodo-local',
-        '##GETTODOSAPIURL##': 'https://getem-done-tasks-functions.azurewebsites.net/gettodos-local',
+        '##TODOSAPIURL##': 'https://getem-done-tasks-functions.azurewebsites.net/todo-local',
         '##DOMAIN##': 'http://localhost:3000'        
       }
     }),
