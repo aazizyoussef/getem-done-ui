@@ -20,7 +20,7 @@ export class ManageTodoPage extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.props.todo.id != nextProps.todo.id) {
+    if (this.props.todo.TodoId != nextProps.todo.TodoId) {
       // Necessary to populate form when existing todo is loaded directly.
       this.setState({todo: Object.assign({}, nextProps.todo)});
     }
@@ -92,15 +92,15 @@ ManageTodoPage.contextTypes = {
 };
 
 function getTodoById(todos, id) {
-  const todo = todos.filter(todo => todo.id == id);
+  const todo = todos.filter(todo => todo.TodoId == id);
   if (todo) return todo[0]; //since filter returns an array, have to grab the first.
   return null;
 }
 
 function mapStateToProps(state, ownProps) {
-  const todoId = ownProps.params.id; // from the path `/todo/:id`
+  const todoId = ownProps.params.TodoId; // from the path `/todo/:id`
 
-  let todo = {id: '', Description: ''};
+  let todo = {TodoId: '', Description: ''};
 
   if (todoId && state.todos.length > 0) {
     todo = getTodoById(state.todos, todoId);
