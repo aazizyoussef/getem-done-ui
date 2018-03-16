@@ -33,7 +33,7 @@ class TodoApi {
   }
 
   static deleteTodo(id) {
-    return fetch(TODOS_API_URL + "/Delete/" + todo.id, 
+    return fetch(TODOS_API_URL + "/Delete/" + id, 
       {
         credentials: "include",
         method: "delete"
