@@ -11,7 +11,7 @@ describe('Todo Actions', () => {
   describe('createTodoSuccess', () => {
     it('should create a CREATE_TODO_SUCCESS action', () => {
       //arrange
-      const todo = {id: 'clean-code', Description: 'Clean Code'};
+      const todo = {id: 'clean-code', description: 'Clean Code'};
       const expectedAction = {
         type: types.CREATE_TODO_SUCCESS,
         todo: todo
@@ -51,7 +51,7 @@ describe('Async Actions', () => {
 
       const expectedActions = [
         {type: types.BEGIN_AJAX_CALL},
-        {type: types.LOAD_TODOS_SUCCESS, body: {todos: [{id: 'clean-code', Description: 'Clean Code'}]}}
+        {type: types.LOAD_TODOS_SUCCESS, body: {todos: [{id: 'clean-code', description: 'Clean Code'}]}}
       ];
       const store = mockStore({todos: []}, expectedActions, done);
       store.dispatch(todoActions.loadTodos()).then(() => {

@@ -6,11 +6,11 @@ describe('Todo Reducer', () => {
   it('should add todo when passed CREATE_TODO_SUCCESS', () => {
     // arrange
     const initialState = [
-      {Description: 'A'},
-      {Description: 'B'}
+      {description: 'A'},
+      {description: 'B'}
     ];
 
-    const newTodo = {Description: 'C'};
+    const newTodo = {description: 'C'};
 
     const action = actions.createTodoSuccess(newTodo);
 
@@ -19,20 +19,20 @@ describe('Todo Reducer', () => {
 
     // assert
     expect(newState.length).toEqual(3);
-    expect(newState[0].Description).toEqual('A');
-    expect(newState[1].Description).toEqual('B');
-    expect(newState[2].Description).toEqual('C');
+    expect(newState[0].description).toEqual('A');
+    expect(newState[1].description).toEqual('B');
+    expect(newState[2].description).toEqual('C');
   });
 
   it('should update todo when passed UPDATE_TODO_SUCCESS', () => {
     // arrange
     const initialState = [
-      {id: 'A', Description: 'A'},
-      {id: 'B', Description: 'B'},
-      {id: 'C', Description: 'C'}
+      {id: 'A', description: 'A'},
+      {id: 'B', description: 'B'},
+      {id: 'C', description: 'C'}
     ];
 
-    const todo = {id: 'B', Description: 'New Description'};
+    const todo = {id: 'B', description: 'New description'};
     const action = actions.updateTodoSuccess(todo);
 
     // act
@@ -41,8 +41,8 @@ describe('Todo Reducer', () => {
     const untouchedTodo = newState.find(a => a.id == 'A');
 
     // assert
-    expect(updatedTodo.Description).toEqual('New Description');
-    expect(untouchedTodo.Description).toEqual('A');
+    expect(updatedTodo.description).toEqual('New description');
+    expect(untouchedTodo.description).toEqual('A');
     expect(newState.length).toEqual(3);
   });
 });

@@ -28,10 +28,23 @@ export function loadTodos() {
   };
 }
 
-export function saveTodo(todo) {
+export function createTodo(todo) {
   return function (dispatch, getState) {
     dispatch(beginAjaxCall());
-    return todoApi.saveTodo(todo).then(todo => {
+    return todoApi.createTodo(todo).then(todo => {
+      todo.id ? dispatch(updateTodoSuccess(todo)) : dispatch(createTodoSuccess(todo));
+      dispatch(loadTodos());
+    }).catch(error => {
+      dispatch(ajaxCallError(error));
+      throw(error);
+    });
+  };
+}
+
+export function updateTodo(todo) {
+  return function (dispatch, getState) {
+    dispatch(beginAjaxCall());
+    return todoApi.updateTodo(todo).then(todo => {
       todo.id ? dispatch(updateTodoSuccess(todo)) : dispatch(createTodoSuccess(todo));
       dispatch(loadTodos());
     }).catch(error => {

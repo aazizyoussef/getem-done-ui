@@ -8,7 +8,7 @@ describe ('Manage Todo Page', () => {
     const props = {
       authors: [],
       actions: { saveTodo: () => { return Promise.resolve(); }},
-      todo: {userId: '', Description: ''}
+      todo: {userId: '', description: ''}
     };
     const wrapper = mount(<ManageTodoPage {...props}/>);
     const saveButton = wrapper.find('input').last();

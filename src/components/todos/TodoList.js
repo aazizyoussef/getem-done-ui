@@ -6,12 +6,12 @@ const TodoList = ({todos}) => {
     <table className="table">
       <thead>
       <tr>
-        <th>Description</th>
+        <th>description</th>
       </tr>
       </thead>
       <tbody>
       {todos.map(todo =>
-        <TodoListRow key={todo.TodoId} todo={todo}/>
+        <TodoListRow key={todo.id} todo={todo}/>
       )}
       </tbody>
     </table>

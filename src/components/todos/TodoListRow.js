@@ -4,7 +4,7 @@ import {Link} from 'react-router';
 const TodoListRow = ({todo}) => {
   return (
     <tr>
-      <td><Link to={'/todo/' + todo.TodoId}>{todo.Description}</Link></td>
+      <td><Link to={'/todo/' + todo.id}>{todo.description}</Link></td>
     </tr>
   );
 };

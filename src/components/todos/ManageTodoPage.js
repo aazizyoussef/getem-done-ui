@@ -20,7 +20,7 @@ export class ManageTodoPage extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.props.todo.TodoId != nextProps.todo.TodoId) {
+    if (this.props.todo.id != nextProps.todo.id) {
       // Necessary to populate form when existing todo is loaded directly.
       this.setState({todo: Object.assign({}, nextProps.todo)});
     }
@@ -37,8 +37,8 @@ export class ManageTodoPage extends React.Component {
     let formIsValid = true;
     let errors = {};
 
-    if (this.state.todo.Description.length < 5) {
-      errors.Description = 'Description must be at least 5 characters.';
+    if (this.state.todo.description.length < 5) {
+      errors.description = 'description must be at least 5 characters.';
       formIsValid = false;
     }
 
@@ -54,12 +54,24 @@ export class ManageTodoPage extends React.Component {
     }
 
     this.setState({saving: true});
-    this.props.actions.saveTodo(this.state.todo)
-      .then(() => this.redirect())
-      .catch(error => {
-        toastr.error(error);
-        this.setState({saving: false});
-      });
+    if(this.state.todo.id)
+    {
+      this.props.actions.updateTodo(this.state.todo)
+        .then(() => this.redirect())
+        .catch(error => {
+          toastr.error(error);
+          this.setState({saving: false});
+        });
+    }
+    else
+    {
+      this.props.actions.createTodo(this.state.todo)
+        .then(() => this.redirect())
+        .catch(error => {
+          toastr.error(error);
+          this.setState({saving: false});
+        });
+    }
   }
 
   redirect() {
@@ -92,18 +104,18 @@ ManageTodoPage.contextTypes = {
 };
 
 function getTodoById(todos, id) {
-  const todo = todos.filter(todo => todo.TodoId == id);
+  const todo = todos.filter(todo => todo.id == id);
   if (todo) return todo[0]; //since filter returns an array, have to grab the first.
   return null;
 }
 
 function mapStateToProps(state, ownProps) {
-  const todoId = ownProps.params.TodoId; // from the path `/todo/:id`
+  const id = ownProps.params.id; // from the path `/todo/:id`
 
-  let todo = {TodoId: '', Description: ''};
+  let todo = {id: '', description: ''};
 
-  if (todoId && state.todos.length > 0) {
-    todo = getTodoById(state.todos, todoId);
+  if (id && state.todos.length > 0) {
+    todo = getTodoById(state.todos, id);
   }
 
   return {

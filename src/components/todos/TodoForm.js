@@ -7,11 +7,11 @@ const TodoForm = ({todo, onSave, onChange, saving, errors}) => {
     <form>
       <h1>Todo</h1>
       <TextInput
-        name="Description"
-        label="Description"
-        value={todo.Description}
+        name="description"
+        label="description"
+        value={todo.description}
         onChange={onChange}
-        error={errors.Description}/>
+        error={errors.description}/>
 
       <input
         type="submit"

@@ -14,7 +14,7 @@ class TodoApi {
       });
   }
 
-  static saveTodo(todo) {
+  static createTodo(todo) {
     return fetch(TODOS_API_URL + "/Post",
       {
         credentials: "include",
@@ -23,15 +23,20 @@ class TodoApi {
     });
   }
 
-  static deleteTodo(todoId) {
-    return fetch(TODOS_API_URL + "/Delete", 
+  static updateTodo(todo) {
+    return fetch(TODOS_API_URL + "/Put/" + todo.id,
       {
-        credentials: "include"
-      })
-      .then((result) => {
-        // Get the result
-        // If we want text, call result.text()
-        return result.json();
+        credentials: "include",
+        method: "post",
+        body: JSON.stringify(todo)
+    });
+  }
+
+  static deleteTodo(id) {
+    return fetch(TODOS_API_URL + "/Delete/" + todo.id, 
+      {
+        credentials: "include",
+        method: "delete"
       });
   }
 }
